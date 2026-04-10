@@ -16,8 +16,8 @@
 }
 
 .segment.on {
-  background: linear-gradient(135deg, #ffeb3b, #fbc02d);
-  box-shadow: 0 0 8px rgba(255, 235, 59, 0.85), inset 0 1px 2px rgba(255, 255, 255, 0.35);
+  background: linear-gradient(135deg, #fff84a, #ffd500);
+  box-shadow: 0 0 10px rgba(255, 234, 0, 0.95), inset 0 1px 2px rgba(255, 255, 255, 0.4);
 }
 
 .segment.off {
