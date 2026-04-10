@@ -235,7 +235,7 @@ function App() {
         ) : null}
       </div>
       <div className="header">
-        <h1>Wasserball Scoreboard</h1>
+        <h1>Waterpolo Scoreboard</h1>
         <div className="matchup">
           <input
             type="text"
@@ -260,7 +260,10 @@ function App() {
             <div className="seven-segment-display">
               <SevenSegmentDigit digit={Math.floor(time / 600)} />
               <SevenSegmentDigit digit={Math.floor((time / 60) % 10)} />
-              <div className="colon">:</div>
+              <div className="colon" aria-hidden="true">
+                <span className="colon-dot"></span>
+                <span className="colon-dot"></span>
+              </div>
               <SevenSegmentDigit digit={Math.floor((time % 60) / 10)} />
               <SevenSegmentDigit digit={time % 10} />
             </div>
