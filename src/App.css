@@ -313,14 +313,14 @@
   padding: 6px 10px;
   border: none;
   border-radius: 5px;
-  background-color: #2196F3;
+  background-color: #4CAF50;
   color: white;
   cursor: pointer;
   width: 40px;
 }
 
 .quarter-buttons button:hover {
-  background-color: #0b7dda;
+  background-color: #45a049;
 }
 
 .teams {
@@ -372,14 +372,14 @@
   padding: 8px;
   border: none;
   border-radius: 5px;
-  background-color: #2196F3;
+  background-color: #4CAF50;
   color: white;
   cursor: pointer;
   width: 40px;
 }
 
 .team button:hover {
-  background-color: #0b7dda;
+  background-color: #45a049;
 }
 
 .ticks {
