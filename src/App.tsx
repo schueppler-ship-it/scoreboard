@@ -25,7 +25,15 @@ function App() {
   const [manualTimeError, setManualTimeError] = useState('')
   const [showManualTimeEditor, setShowManualTimeEditor] = useState(false)
   const [time, setTime] = useState(480) // 8 minutes in seconds, counting down
+  const [isBreak, setIsBreak] = useState(false)
   const [isRunning, setIsRunning] = useState(false)
+
+  const getBreakSecondsForQuarter = (currentQuarter: number) => {
+    if (currentQuarter === 2) {
+      return 180
+    }
+    return 120
+  }
 
   const playEndSignal = async () => {
     const AudioContextClass =
@@ -106,19 +114,42 @@ function App() {
       interval = setInterval(() => {
         setTime((prevTime) => {
           if (prevTime <= 1) {
+            if (isBreak) {
+              setIsBreak(false)
+              setQuarter((prevQuarter) => Math.min(4, prevQuarter + 1))
+              setShotClock(28)
+              setManualShotClockInput('28')
+              setManualShotClockError('')
+              setIsRunning(false)
+              void playEndSignal()
+              return 480
+            }
+
+            if (quarter < 4) {
+              setIsBreak(true)
+              setShotClock(28)
+              setManualShotClockInput('28')
+              setManualShotClockError('')
+              void playEndSignal()
+              return getBreakSecondsForQuarter(quarter)
+            }
+
             setIsRunning(false)
             void playEndSignal()
             return 0
           }
           return prevTime - 1
         })
-        setShotClock((prevShotClock) => {
-          if (prevShotClock === 1) {
-            void playShotClockSignal()
-            return 0
-          }
-          return prevShotClock > 0 ? prevShotClock - 1 : 0
-        })
+
+        if (!isBreak) {
+          setShotClock((prevShotClock) => {
+            if (prevShotClock === 1) {
+              void playShotClockSignal()
+              return 0
+            }
+            return prevShotClock > 0 ? prevShotClock - 1 : 0
+          })
+        }
       }, 1000)
     } else if (!isRunning) {
       if (interval) clearInterval(interval)
@@ -126,7 +157,7 @@ function App() {
     return () => {
       if (interval) clearInterval(interval)
     }
-  }, [isRunning, time])
+  }, [isBreak, isRunning, quarter, time])
 
   const applyManualTime = () => {
     const match = manualTimeInput.trim().match(/^(\d{1,2}):([0-5]\d)$/)
@@ -170,6 +201,7 @@ function App() {
     setManualShotClockError('')
     setShowManualShotClockEditor(false)
     setTime(480)
+    setIsBreak(false)
     setManualTimeInput('08:00')
     setManualTimeError('')
     setShowManualTimeEditor(false)
@@ -247,6 +279,7 @@ function App() {
         <h1>Waterpolo Scoreboard</h1>
       </div>
       <div className="timer">
+        <div className="timer-phase">{isBreak ? 'Pause' : 'Spielzeit'}</div>
         <div className="timer-main">
           <div className="time-display-wrapper">
             <div className="seven-segment-display">
@@ -277,7 +310,9 @@ function App() {
         </div>
         {showManualTimeEditor ? (
           <div className="timer-manual">
-            <label htmlFor="manual-time" className="timer-manual-label">Spielzeit (MM:SS)</label>
+            <label htmlFor="manual-time" className="timer-manual-label">
+              {isBreak ? 'Pausenzeit (MM:SS)' : 'Spielzeit (MM:SS)'}
+            </label>
             <div className="timer-manual-controls">
               <input
                 id="manual-time"
