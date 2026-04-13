@@ -1,6 +1,15 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
 import SevenSegmentDigit from './SevenSegmentDigit'
+
+function teamNameStyle(name: string): React.CSSProperties {
+  const len = name.length
+  if (len <= 8)  return { fontSize: '32px', letterSpacing: '0.12em' }
+  if (len <= 11) return { fontSize: '26px', letterSpacing: '0.08em' }
+  if (len <= 14) return { fontSize: '21px', letterSpacing: '0.04em' }
+  if (len <= 18) return { fontSize: '17px', letterSpacing: '0.02em' }
+  return { fontSize: '13px', letterSpacing: '0' }
+}
 
 function App() {
   const [teamAName, setTeamAName] = useState('Team A')
@@ -236,23 +245,6 @@ function App() {
       </div>
       <div className="header">
         <h1>Waterpolo Scoreboard</h1>
-        <div className="matchup">
-          <input
-            type="text"
-            value={teamAName}
-            onChange={(e) => setTeamAName(e.target.value)}
-            className="team-name-input"
-            placeholder="Team A"
-          />
-          <span className="vs">vs</span>
-          <input
-            type="text"
-            value={teamBName}
-            onChange={(e) => setTeamBName(e.target.value)}
-            className="team-name-input"
-            placeholder="Team B"
-          />
-        </div>
       </div>
       <div className="timer">
         <div className="timer-main">
@@ -308,7 +300,14 @@ function App() {
       </div>
       <div className="teams">
         <div className="team">
-          <h3>{teamAName}</h3>
+          <input
+            type="text"
+            value={teamAName}
+            onChange={(e) => setTeamAName(e.target.value)}
+            className="team-name-input"
+            placeholder="Team A"
+            style={teamNameStyle(teamAName)}
+          />
           <div className="score-display">
             <div className="score">
               <SevenSegmentDigit digit={Math.floor(scoreTeamA / 10)} className="score-digit" />
@@ -321,7 +320,14 @@ function App() {
           </div>
         </div>
         <div className="team">
-          <h3>{teamBName}</h3>
+          <input
+            type="text"
+            value={teamBName}
+            onChange={(e) => setTeamBName(e.target.value)}
+            className="team-name-input"
+            placeholder="Team B"
+            style={teamNameStyle(teamBName)}
+          />
           <div className="score-display">
             <div className="score">
               <SevenSegmentDigit digit={Math.floor(scoreTeamB / 10)} className="score-digit" />

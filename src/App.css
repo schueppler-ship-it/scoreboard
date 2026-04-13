@@ -13,12 +13,12 @@
 
 .header {
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 36px;
 }
 
 .scoreboard h1 {
   color: #333;
-  margin: 0 0 10px 0;
+  margin: 0 0 32px 0;
   font-size: 40px;
 }
 
@@ -54,7 +54,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 64px;
   gap: 12px;
 }
 
@@ -358,6 +358,32 @@
   font-size: 18px;
 }
 
+.team .team-name-input {
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 8px;
+  font-weight: 900;
+  padding: 10px 12px;
+  text-transform: uppercase;
+  text-align: left;
+  border: none;
+  border-bottom: 3px solid #333;
+  border-radius: 0;
+  background: transparent;
+}
+
+.team .team-name-input:focus {
+  outline: none;
+  border-bottom-color: #4CAF50;
+  box-shadow: none;
+}
+
+@media (max-width: 680px) {
+  .team .team-name-input {
+    letter-spacing: 0.08em;
+  }
+}
+
 .score-display {
   display: flex;
   align-items: center;
@@ -391,6 +417,166 @@
 
 .team button:hover {
   background-color: #45a049;
+}
+
+@media (max-width: 1024px) {
+  .scoreboard {
+    padding: 12px;
+  }
+
+  .scoreboard h1 {
+    font-size: 34px;
+    margin-bottom: 20px;
+  }
+
+  .timer-main {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .timer-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .quarter-panel,
+  .shot-clock-panel {
+    position: static;
+    width: 100%;
+    max-width: 560px;
+    margin-bottom: 12px;
+  }
+
+  .shot-clock-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .quarter-buttons {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .teams {
+    width: 100%;
+    max-width: 560px;
+    gap: 12px;
+  }
+
+  .team {
+    width: 100%;
+    max-width: 260px;
+  }
+}
+
+@media (max-width: 680px) {
+  .scoreboard {
+    padding: 10px 8px 14px;
+    gap: 10px;
+  }
+
+  .header {
+    margin-bottom: 20px;
+  }
+
+  .scoreboard h1 {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .matchup {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .team-name-input {
+    min-width: 120px;
+    width: min(45vw, 180px);
+  }
+
+  .timer {
+    margin-bottom: 20px;
+  }
+
+  .seven-segment-display {
+    padding: 8px;
+    border-radius: 8px;
+  }
+
+  .colon {
+    gap: 12px;
+    margin: 0 2px;
+    transform: translateY(-3px);
+  }
+
+  .colon-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+  }
+
+  .timer button,
+  .shot-clock-panel button,
+  .team button,
+  .quarter-buttons button {
+    min-height: 42px;
+    font-size: 15px;
+    padding: 8px 12px;
+  }
+
+  .timer-buttons {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .timer-buttons button {
+    flex: 1;
+    max-width: 150px;
+  }
+
+  .timer-manual-controls,
+  .shot-clock-manual-controls {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .timer-manual-input,
+  .shot-clock-manual-input {
+    width: 100%;
+    max-width: 180px;
+  }
+
+  .teams {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    max-width: 320px;
+  }
+
+  .team {
+    width: 100%;
+    max-width: none;
+    padding: 12px 10px;
+  }
+
+  .score-display {
+    width: 100%;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .timer-manual-toggle,
+  .shot-clock-manual-toggle {
+    right: -10px;
+    bottom: -10px;
+    min-width: 28px;
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
 }
 
 .ticks {

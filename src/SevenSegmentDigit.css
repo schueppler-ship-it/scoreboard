@@ -133,3 +133,149 @@
   width: 38px;
   height: 9px;
 }
+
+@media (max-width: 900px) {
+  .seven-segment-digit {
+    width: 68px;
+    height: 118px;
+    margin: 8px;
+  }
+
+  .segment.a,
+  .segment.g,
+  .segment.d {
+    width: 44px;
+    height: 10px;
+  }
+
+  .segment.a {
+    top: 8px;
+  }
+
+  .segment.g {
+    top: 51px;
+  }
+
+  .segment.d {
+    top: 94px;
+  }
+
+  .segment.b,
+  .segment.c,
+  .segment.e,
+  .segment.f {
+    width: 10px;
+    height: 31px;
+  }
+
+  .segment.b,
+  .segment.f {
+    top: 18px;
+  }
+
+  .segment.c,
+  .segment.e {
+    top: 60px;
+  }
+}
+
+@media (max-width: 680px) {
+  .seven-segment-digit {
+    width: 52px;
+    height: 90px;
+    margin: 4px;
+    padding: 4px;
+  }
+
+  .segment.a,
+  .segment.g,
+  .segment.d {
+    width: 33px;
+    height: 8px;
+  }
+
+  .segment.a {
+    top: 6px;
+  }
+
+  .segment.g {
+    top: 39px;
+  }
+
+  .segment.d {
+    top: 72px;
+  }
+
+  .segment.b,
+  .segment.c,
+  .segment.e,
+  .segment.f {
+    width: 8px;
+    height: 24px;
+  }
+
+  .segment.b,
+  .segment.f {
+    top: 14px;
+    right: 6px;
+  }
+
+  .segment.f,
+  .segment.e {
+    left: 6px;
+  }
+
+  .segment.c,
+  .segment.e {
+    top: 46px;
+  }
+
+  .seven-segment-digit.score-digit {
+    width: 50px;
+    height: 76px;
+    margin: 4px;
+  }
+
+  .seven-segment-digit.score-digit .segment.a,
+  .seven-segment-digit.score-digit .segment.g,
+  .seven-segment-digit.score-digit .segment.d {
+    width: 30px;
+    height: 7px;
+  }
+
+  .seven-segment-digit.score-digit .segment.a {
+    top: 5px;
+  }
+
+  .seven-segment-digit.score-digit .segment.g {
+    top: 36px;
+  }
+
+  .seven-segment-digit.score-digit .segment.d {
+    top: 64px;
+  }
+
+  .seven-segment-digit.score-digit .segment.b,
+  .seven-segment-digit.score-digit .segment.c,
+  .seven-segment-digit.score-digit .segment.e,
+  .seven-segment-digit.score-digit .segment.f {
+    width: 7px;
+    height: 16px;
+  }
+
+  .seven-segment-digit.score-digit .segment.b,
+  .seven-segment-digit.score-digit .segment.f {
+    top: 16px;
+    right: 5px;
+  }
+
+  .seven-segment-digit.score-digit .segment.f,
+  .seven-segment-digit.score-digit .segment.e {
+    left: 5px;
+  }
+
+  .seven-segment-digit.score-digit .segment.c,
+  .seven-segment-digit.score-digit .segment.e {
+    top: 43px;
+  }
+}
